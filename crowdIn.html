@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>我要众筹</title>
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<script src="js/fontsizeset.js"></script>
+<link href="css/reset.css" rel="stylesheet">
+<link href="css/loadingCss3.css" rel="stylesheet">
+<link href="css/layer.css" rel="stylesheet">
+<style type="text/css">
+	body{
+		background-color: #f2f3f8;
+		color: #41576a;
+	}
+	header{
+		position: relative;
+	}
+
+
+	#main{
+		background-color: #fff;
+		padding: 30px 15px;
+	}
+
+	#crowd{
+		color: #fdb52d;
+	    text-align: center;
+	    justify-content: space-between;
+	    width: 100%;
+	    position: absolute;
+	    bottom: 0;
+	    padding:6px 0;
+	    left: 0;
+	    box-sizing: border-box;
+		background-color: rgba(0,0,0,.6);
+	}
+	#crowd span{
+		margin: 0 5px;
+	}
+	#crowd b{
+		font-size: 18px;
+		margin: 0 5px;
+	}
+	.top input{
+		border: solid 1px #f2f3f8;
+	    height: 32px;
+	    text-align: center;
+	    margin-left: 20px;
+	    border-radius: 4px;
+	    color: #fdb52d;
+	}
+	.mid ul{
+		display: flex;
+		justify-content: space-between;
+		margin-top: 20px;
+	}
+	.mid ul li{
+		display: inline-block;
+		border: solid 1px #f2f3f8;
+		color: #999;
+		padding: 2px .2rem;
+		border-radius: 4px;
+	}
+	.mid ul li span{
+		color: #fdb52d;
+	}
+	.active{
+		color: #fff !important;
+		background-color: #36c26c;
+	}
+	.active1{
+		color: #fff !important;
+		background-color: #f3f3f3;
+	}
+	.btm input{
+		background-color: #f2f3f8;
+	    display: block;
+	    width: 100%;
+	    line-height: 40px;
+	    text-align: center;
+	    border-radius: 4px;
+	    margin-top: 20px;
+	}
+	#payment {
+	    width: 90%;
+	    background-color: #36c26c;
+	    display: block;
+	    margin: 50px auto 0;
+	    height: 44px;
+	    border-radius: 3px;
+	    font-size: 16px;
+	    color: #fff;
+	}
+</style>
+</head>
+<body>
+	<header>
+		<img src="images/game_banner.png">
+		<a href="my.html" id="myInfo"></a>
+	
+		<section id="crowd">
+			<p>已收到<b>456788</b>元众筹</p>
+			<p>人气排名全场第<span>3</span>名本队第<span>1</span>名</p>
+		</section>
+	</header>
+	<section id="main">
+		<section class="top">
+			<lable>众筹金额</lable>
+			<input id="inPay" type="text" placeholder="输入众筹金额">
+		</section>
+		<section class="mid" id="tapLi">
+			<ul>
+				<li class="active"><span  style="color: #fff;">3</span>元</li>
+				<li><span>5</span>元</li>
+				<li><span>10</span>元</li>
+				<li><span>20</span>元</li>
+			</ul>
+		</section>
+		<input type="hidden" name="" id="relMony">
+		<section class="btm">
+			<input type="text" placeholder="请输入您的留言！">
+		</section>
+	</section>
+	<button id="payment">提交众筹</button>
+<script src="js/loadingCss3.js"></script>  
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/layer-min.js"></script>  
+<script type="text/javascript">
+	var crowdObj={
+		relMoy:null
+	}
+	$("#tapLi ul li").on("click",function(){
+		$(this).addClass("active").siblings().removeClass("active");
+		$(this).siblings().find("span").css("color","#fdb52d");
+		$(this).find("span").css("color","#fff");
+		$("#tapLi ul li").removeClass("active1");
+		$("#inPay").val("");
+	})
+	$("#inPay").on("input propertychange",function(){
+		var _this=this;
+		testMony(_this);
+		$("#tapLi ul li").removeClass("active");
+		$("#tapLi ul li").find("span").css("color","#fdb52d");
+		$("#tapLi ul li").addClass("active1");
+		if ($(this).val()=="") {
+			$("#tapLi ul li").removeClass("active1");
+			$("#tapLi ul li").eq(0).addClass("active");
+			$("#tapLi ul li").eq(0).find("span").css("color","#fff");
+		}
+		
+	})
+	$("#payment").on("click",function(){
+		var inPay=$("#inPay").val();
+		var isClass=$("#tapLi ul li").hasClass("active");
+		if (isClass) {
+			var tapMony =$(".active").find("span").html();
+			crowdObj.relMoy=Number(tapMony);
+		}else{
+			crowdObj.relMoy=Number(inPay);
+		}
+		location.href="crowdPay.html";
+		console.log(crowdObj.relMoy)//最后提交的金额
+	})
+	function testMony(_this){
+		var hmdInputContent = $(_this).val();
+	    //不符合小数的会获取不到值
+	    if (hmdInputContent == "") {
+	        $(this).val("");
+	    } else {
+	        //格式化数据
+	        var pattin = {};
+	     
+	        pattin = new RegExp("^([1-9]\\d{0,8}|0)(\\.\\d{0,2})?$");
+	       
+	        if (!pattin.test(hmdInputContent)) {
+	            var pos = hmdInputContent.length; //暂时设置光标为最后
+	            if (pos != 0) {
+	                //计算有效内容
+	                hmdInputContent = hmdInputContent.slice(0, pos - 1)
+	                $(_this).val(hmdInputContent);
+	            }
+	        }
+	    }
+	}
+</script>
+
+</body>
+</html>

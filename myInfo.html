@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>编辑资料</title>
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link href="css/reset.css" rel="stylesheet">
+<link href="css/loadingCss3.css" rel="stylesheet">
+<link href="css/layer.css" rel="stylesheet">
+<style type="text/css">
+	body{
+		background-color: #f2f3f8;
+		color: #333;
+	}
+	ul{
+		background-color: #fff;
+	}
+	ul li{
+		display: flex;
+		align-items: center;
+    	justify-content: space-between;
+    	line-height: 50px;
+    	border-bottom: solid 1px #e3e4e5;
+		padding: 0 15px;
+	}
+	ul li input{
+		height: 40px;
+		flex: 1;
+		text-align: right;
+	}
+	ul li img{
+		width:38px;
+	}
+	#payment {
+		width: 92%;
+		background-color: #36c26c;
+		display: block;
+		margin: 50px auto 0;
+		height: 44px;
+		border-radius: 3px;
+		font-size: 16px;
+		color: #fff;
+	}
+</style>
+</head>
+<body>
+<ul>
+	<li>
+		<p>头像</p>
+		<img src="images/footboy.png">
+	</li>
+	<li>
+		<p>昵称</p>
+		<input type="text" name="" value="我的昵称" placeholder="请输入名称" id="goodsName">
+	</li>
+	<li>
+		<p>
+			<p>手机号</p>
+			<input type="tel" name="" maxlength="11" value="15081803600" placeholder="请输入手机号" id="goodsPhone">
+		</p>
+
+	</li>
+</ul>
+
+<button id="payment">提交</button>
+
+<script src="js/loadingCss3.js"></script>  
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/layer-min.js"></script>  
+<script type="text/javascript">
+	$("#payment").on("click",function(){
+		
+		var reg_phone = /^\d{11,}$/;
+	    var phoneVal = $("#goodsPhone").val();
+	    var phoneLength = phoneVal.length;
+	    var goodsName = $("#goodsName").val();
+
+	    if (goodsName == "") {
+	    	layer.open({
+			  title: '提示'
+			  ,content: '名称不能为空'
+			});
+	        return
+	    };
+	    if (!reg_phone.test(phoneVal) || $.trim(phoneVal) == "") {
+	    	layer.open({
+			  title: '提示'
+			  ,content: '请输入有效手机号码'
+			});
+	        return
+	    };
+	    layer.open({
+		  title: '提示'
+		  ,content: '提交成功！'
+		});
+	    
+	})
+</script>
+
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>比赛详情</title>
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link href="css/reset.css" rel="stylesheet">
+<link href="css/loadingCss3.css" rel="stylesheet">
+<link href="css/layer.css" rel="stylesheet">
+<style type="text/css">
+	body{
+		background-color: #f2f3f8;
+		color: #41576a;
+	}
+	header{
+		position: relative;
+	}
+	header #myInfo{
+		width: 18px;
+		height: 18px;
+		background: no-repeat url(images/icon_per.png);
+		position: absolute;
+		right: 20px;
+	    top: 18px;
+	    background-size: cover;
+	}
+	header ul{
+		width: 90%;
+	    background-color: #fff;
+	    border-radius: 6px;
+	    margin: -34px auto;
+	    position: relative;
+	    padding: 10px 0;
+	    box-shadow: 2px 2px 4px #ececec;
+	}
+	header ul li{
+		display: inline-block;
+	    width: 25%;
+	    float: left;
+	    text-align: center;
+	}
+	header ul li img{
+		display: inline;
+		width: 50%;
+
+	}
+	header ul li p{
+		margin-top: 5px;
+	}
+	header ul li:first-child{
+		color: #36c26c;
+	}
+
+	#main{
+		background-color: #fff;
+		margin-top: 50px;
+	}
+	#main .list{
+		padding:10px 15px;
+		border-bottom: solid 1px #e3e4e5;
+	}
+	#main .list .top{
+		text-align: center;
+    	color: #999;
+    	margin-bottom: 12px;
+	}
+	#main .list .inner{
+		display: flex;
+		align-items: center;
+	}
+	#main .list .inner1,#main .list .inner3,.item3-inner span{
+		line-height: 40px;
+	}
+	#main .list .inner2{
+		flex: 1;
+		text-align: center;
+	}
+	#main .list .inner2 span{
+		color: #36c26c;
+	}
+	#main .list .inner img,.item3-inner img{
+		width: 40px;
+		height: 40px;
+		display: inline;
+	}
+	#main .item{
+		display: none;
+	}
+
+
+	.direct-num,.over-num{
+		font-size: 16px;
+    	font-weight: bold;
+	}
+	.direct-status,.over-status{
+		border: solid 1px #36c26c;
+	    display: inline-block;
+	    /*padding: 2px 0px;*/
+	    border-radius: 24px;
+	    color: #36c26c;
+	    width: 80px;
+		line-height: 18px;
+		height: 18px;
+		font-size: 12px;
+	}
+	.direct-status{
+		background: no-repeat url(images/game_play.png) right;
+		background-size: 20px;
+	}
+	.over-status{
+		color: #999;
+		border: solid 1px #999;
+	}
+
+	#gameTable table{
+		width: 100%;
+		text-align: center;
+		line-height: 28px;
+	}
+	#gameTable table tr:nth-child(odd){
+		background-color:#fff;
+	}
+	#gameTable table tr:nth-child(even){
+		background-color:#f4f7eb;
+	}
+	#gameTable table tr td,#gameTable table tr th{
+		border-right: solid 1px #e3e4e5;
+		font-weight: normal;
+	}
+	#gameTable table tr th{
+		background-color: #36c26c;
+		color: #fff;
+	}
+	#gameTable table tr th:first-child{
+		border-right:0;
+	}
+	#gameTable table tr th b{
+		font-size: 16px;
+	}
+	.add-td-bg{
+		background-color: #fdb52d;
+	    color: #fff;
+	    height: 20px;
+	    width: 20px;
+	    border-radius: 50%;
+	    display: block;
+	    line-height: 20px;
+	    margin: 0 auto;
+	}
+	.item3{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-top: 30px !important;
+    	position: relative;
+	}
+	.item3-inner1{
+		color: #999;
+	}
+	.item3-inner1 span{
+		position: absolute;
+	    top: 10px;
+	    right: 15px;
+	}
+	.item3-inner1 p{
+		padding-right: 20px;
+		background: no-repeat url(images/icon_right.png) right;
+		background-size: 16px;
+		line-height: 26px;
+	}
+	.add-yellow{
+		color: #fdb52d;
+	}
+</style>
+</head>
+<body>
+	<header>
+		<img src="images/game_banner.png">
+		<a href="my.html" id="myInfo"></a>
+		<ul class="cf">
+			<li>
+				<img data-pic="0" src="images/game1a.png">
+				<p>赛程安排</p>
+			</li>
+			<li>
+				<img data-pic="1" src="images/game2b.png">
+				<p>积分排名</p>
+			</li>
+			<li>
+				<img data-pic="2" src="images/game3b.png">
+				<p>参赛球队</p>
+			</li>
+			<li>
+				<img data-pic="3" src="images/game4b.png">
+				<p>我要打赏</p>
+			</li>
+		</ul>
+	</header>
+	<section id="main">
+		<section class="item" style="display: block;">
+			<section class="list">
+				<p class="top cf">
+					<span>17-11-21&emsp;</span>
+					<span>14:40&emsp;</span>
+					<span>周六&emsp;</span>
+				</p>
+				<section class="inner">
+					<section class="inner1">
+						<img src="images/game_bank.png">
+						<span>招商银行</span>
+					</section>
+					<section class="inner2 estimate">
+						<span>周六</span>
+						<span>08:20</span>
+					</section>
+					<section class="inner3">
+						<span>新华社</span>
+						<img src="images/game_hua.png">
+					</section>
+					
+				</section>
+			</section>
+		 
+			<section class="list">
+				<p class="top cf">
+					<span>17-11-21&emsp;</span>
+					<span>14:40&emsp;</span>
+					<span>周六&emsp;</span>
+				</p>
+				<section class="inner">
+					<section class="inner1">
+						<img src="images/game_bank.png">
+						<span>招商银行</span>
+					</section>
+					<section class="inner2 direct">
+						<p class="direct-num">0&ensp;:&ensp;0</p>
+						<p class="direct-status">直播中&emsp;</p>
+					</section>
+					<section class="inner3">
+						<span>新华社</span>
+						<img src="images/game_hua.png">
+					</section>
+					
+				</section>
+			</section>
+		 
+			<section class="list">
+				<p class="top cf">
+					<span>17-11-21&emsp;</span>
+					<span>14:40&emsp;</span>
+					<span>周六&emsp;</span>
+				</p>
+				<section class="inner">
+					<section class="inner1">
+						<img src="images/game_bank.png">
+						<span>招商银行</span>
+					</section>
+					<section class="inner2 over">
+						<p class="over-num">4&ensp;:&ensp;2</p>
+						<p class="over-status">比赛结束</p>
+					</section>
+					<section class="inner3">
+						<span>新华社</span>
+						<img src="images/game_hua.png">
+					</section>
+					
+				</section>
+			</section>
+		</section>
+		<section class="item" id="gameTable">
+			<table>
+				<tr>
+					<th><b>A</b>组</th>
+					<th></th>
+					<th>胜/平/负</th>
+					<th>进球</th>
+					<th>净进球</th>
+					<th>积分</th>
+				</tr>
+				<tr>
+					<td><span class="add-td-bg">1</span></td>
+					<td>冠心软件</td>
+					<td>6/4/5</td>
+					<td>4</td>
+					<td>3</td>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td><span class="add-td-bg">2</span></td>
+					<td>华语软件</td>
+					<td>6/4/5</td>
+					<td>3</td>
+					<td>3</td>
+					<td>3</td>
+				</tr>
+				<tr>
+					<td><span class="add-td-bg">3</span></td>
+					<td>知乎网</td>
+					<td>6/4/5</td>
+					<td>2</td>
+					<td>2</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>快乐先锋</td>
+					<td>6/4/5</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>君乐堡</td>
+					<td>6/4/5</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<th><b>B</b>组</th>
+					<th></th>
+					<th>胜/平/负</th>
+					<th>进球</th>
+					<th>净进球</th>
+					<th>积分</th>
+				</tr>
+				<tr>
+					<td><span class="add-td-bg">1</span></td>
+					<td>冠心软件</td>
+					<td>6/4/5</td>
+					<td>4</td>
+					<td>3</td>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td><span class="add-td-bg">2</span></td>
+					<td>华语软件</td>
+					<td>6/4/5</td>
+					<td>3</td>
+					<td>3</td>
+					<td>3</td>
+				</tr>
+				<tr>
+					<td><span class="add-td-bg">3</span></td>
+					<td>知乎网</td>
+					<td>6/4/5</td>
+					<td>2</td>
+					<td>2</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>快乐先锋</td>
+					<td>6/4/5</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>君乐堡</td>
+					<td>6/4/5</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+				</tr>
+			</table>
+		</section>
+
+		<div class="item">
+			<div class="list item3">
+				<section class="item3-inner">
+					<img src="images/game_bank.png">
+					<span>招商银行</span>
+				</section>
+				<section class="item3-inner1">
+					<span class="add-yellow">+关注</span>
+					<p>查看球队信息</p>
+				</section>
+			</div>
+			<div class="list item3">
+				<section class="item3-inner">
+					<img src="images/game_bank.png">
+					<span>招商银行</span>
+				</section>
+				<section class="item3-inner1">
+					<span class="add-yellow">+关注</span>
+					<p>查看球队信息</p>
+				</section>
+			</div>
+			<div class="list item3">
+				<section class="item3-inner">
+					<img src="images/game_bank.png">
+					<span>招商银行</span>
+				</section>
+				<section class="item3-inner1">
+					<span class="add-yellow">+关注</span>
+					<p>查看球队信息</p>
+				</section>
+			</div>
+			<div class="list item3">
+				<section class="item3-inner">
+					<img src="images/game_bank.png">
+					<span>招商银行</span>
+				</section>
+				<section class="item3-inner1">
+					<span>已关注</span>
+					<p>查看球队信息</p>
+				</section>
+			</div>
+			<div class="list item3">
+				<section class="item3-inner">
+					<img src="images/game_bank.png">
+					<span>招商银行</span>
+				</section>
+				<section class="item3-inner1">
+					<span>已关注</span>
+					<p>查看球队信息</p>
+				</section>
+			</div>
+		</div>
+		<div class="item">
+			<div class="list item3">
+				<section class="item3-inner">
+					<img src="images/game_bank.png">
+					<span>招商银行</span>
+				</section>
+				<section class="item3-inner1">
+					<span class="add-yellow">+关注</span>
+					<p>查看球队信息</p>
+				</section>
+			</div>
+			<div class="list item3">
+				<section class="item3-inner">
+					<img src="images/game_bank.png">
+					<span>招商银行</span>
+				</section>
+				<section class="item3-inner1">
+					<span class="add-yellow">+关注</span>
+					<p>查看球队信息</p>
+				</section>
+			</div>
+			<div class="list item3">
+				<section class="item3-inner">
+					<img src="images/game_bank.png">
+					<span>招商银行</span>
+				</section>
+				<section class="item3-inner1">
+					<span class="add-yellow">+关注</span>
+					<p>查看球队信息</p>
+				</section>
+			</div>
+			<div class="list item3">
+				<section class="item3-inner">
+					<img src="images/game_bank.png">
+					<span>招商银行</span>
+				</section>
+				<section class="item3-inner1">
+					<span>已关注</span>
+					<p>查看球队信息</p>
+				</section>
+			</div>
+			<div class="list item3">
+				<section class="item3-inner">
+					<img src="images/game_bank.png">
+					<span>招商银行</span>
+				</section>
+				<section class="item3-inner1">
+					<span>已关注</span>
+					<p>查看球队信息</p>
+				</section>
+			</div>
+		</div>
+	</section>
+
+<script src="js/loadingCss3.js"></script>  
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/layer-min.js"></script>  
+<script type="text/javascript">
+	var gameObj={
+		picb:["images/game1b.png","images/game2b.png","images/game3b.png","images/game4b.png"],
+		pica:["images/game1a.png","images/game2a.png","images/game3a.png","images/game4a.png"]
+	}
+	$("header ul li").on("click",function(){
+		var index=$(this).index();
+		$("#main .item").eq(index).css("display","block").siblings().css("display","none");
+		 
+		var num=$(this).attr("data-pic");
+		for (var i = 0; i < gameObj.picb.length; i++) {
+			$("header ul li img")[i].src=gameObj.picb[i]
+		};
+		var indexPic=gameObj.pica[index];
+		$("header ul li").eq(index).find("img").attr("src",indexPic);
+		$(this).css("color","#36c26c").siblings().css("color","#41576a");
+	})
+
+</script>
+
+</body>
+</html>

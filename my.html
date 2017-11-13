@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>我的</title>
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<script src="js/fontsizeset.js"></script>
+<link href="css/reset.css" rel="stylesheet">
+<link href="css/loadingCss3.css" rel="stylesheet">
+<link href="css/layer.css" rel="stylesheet">
+<style type="text/css">
+	body{
+		background-color: #f2f3f8;
+		color: #41576a;
+	}
+	header{
+		position: relative;
+	}
+	header #myInfo{
+		background-color: #fdb52d;
+	    position: absolute;
+	    right: 0;
+	    top: 18px;
+	    color: #fff;
+	    text-align: center;
+	    padding: 2px 15px;
+	    border-radius: 18px 0 0 18px;
+	    text-decoration: none;
+	    z-index: 99;
+	}
+	header ul{
+		width: 90%;
+	    background-color: #fff;
+	    border-radius: 6px;
+	    margin: -34px auto;
+	    position: relative;
+	    padding: 10px 0;
+	    box-shadow: 2px 2px 4px #ececec;
+	}
+	header ul li{
+		display: inline-block;
+	    width: 25%;
+	    float: left;
+	    text-align: center;
+	}
+	header ul li img{
+		display: inline;
+		width: 50%;
+
+	}
+	header ul li p{
+		margin-top: 5px;
+	}
+	header ul li:first-child{
+		color: #36c26c;
+	}
+
+	#main{
+		background-color: #fff;
+		margin-top: 50px;
+	}
+	#main .list{
+		padding:10px 15px;
+		border-bottom: solid 1px #e3e4e5;
+	}
+	#main .list .top{
+		text-align: center;
+    	color: #999;
+    	margin-bottom: 12px;
+	}
+	#main .list .inner,.item2-list{
+		display: flex;
+		align-items: center;
+	}
+	#main .list .inner1,#main .list .inner3,.item3-inner span{
+		line-height: 40px;
+	}
+	#main .list .inner2{
+		flex: 1;
+		text-align: center;
+	}
+	#main .list .inner2 span{
+		color: #36c26c;
+	}
+	#main .list .inner img,.item3-inner img,.item2-list img{
+		width: 40px;
+		height: 40px;
+		display: inline;
+	}
+	#main .item{
+		display: none;
+	}
+
+
+	.direct-num,.over-num{
+		font-size: 16px;
+    	font-weight: bold;
+	}
+	.direct-status,.over-status{
+		border: solid 1px #36c26c;
+	    display: inline-block;
+	    /*padding: 2px 0px;*/
+	    border-radius: 24px;
+	    color: #36c26c;
+	    width: 80px;
+		line-height: 18px;
+		height: 18px;
+		font-size: 12px;
+	}
+	.direct-status{
+		background: no-repeat url(images/game_play.png) right;
+		background-size: 20px;
+	}
+	.over-status{
+		color: #999;
+		border: solid 1px #999;
+	}
+
+	#gameTable table{
+		width: 100%;
+		text-align: center;
+		line-height: 28px;
+	}
+	#gameTable table tr:nth-child(odd){
+		background-color:#fff;
+	}
+	#gameTable table tr:nth-child(even){
+		background-color:#f4f7eb;
+	}
+	#gameTable table tr td,#gameTable table tr th{
+		border-right: solid 1px #e3e4e5;
+		font-weight: normal;
+	}
+	#gameTable table tr th{
+		background-color: #36c26c;
+		color: #fff;
+	}
+	#gameTable table tr th:first-child{
+		border-right:0;
+	}
+	#gameTable table tr th b{
+		font-size: 16px;
+	}
+	.add-td-bg{
+		background-color: #fdb52d;
+	    color: #fff;
+	    height: 20px;
+	    width: 20px;
+	    border-radius: 50%;
+	    display: block;
+	    line-height: 20px;
+	    margin: 0 auto;
+	}
+	.item3{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+    	position: relative;
+	}
+	.item3-inner1{
+		color: #999;
+	}
+	.item3-inner1 span{
+		position: absolute;
+	    top: 10px;
+	    right: 15px;
+	}
+	.item3-inner1 p{
+		padding-right: 20px;
+		background: no-repeat url(images/icon_right.png) right;
+		background-size: 16px;
+		line-height: 26px;
+	}
+	.add-yellow,.item2-list :nth-child(4){
+		color: #fdb52d;
+	}
+
+	.item-my{
+		display: flex;
+	    padding: 15px;
+	    border-bottom: solid 1px #e3e4e5;
+	}
+	.item-my button{
+		background-color: rgba(0,0,0,0);
+		position: absolute;
+    	right: 15px;
+    	color: #36c26c;
+    	padding: 5px 10px;
+    	border: solid 1px #36c26c;
+    	border-radius: 4px;
+	}
+	.rew-left {
+	    width: .8rem;
+	    border: solid 1px #e3e4e5;
+	    padding: 5px;
+	    margin: 6px 15px 6px 0;
+	}
+	 
+	.my-block {
+	    display: inline-block;
+	    border: solid 1px #36c26c;
+	    padding: 0 10px;
+	    border-radius: 4px;
+	    color: #36c26c; 
+    	margin-top: 7px;
+	}
+	.receive{
+		margin-left: 15px;
+	}
+	.item3 .shangtop,.item4 .shangtop{
+		background-color: #f2f3f8;
+	}
+	.item3 .dashang-inner{
+		display: flex;
+	    justify-content: space-between;
+	    width: 90%;
+	    margin: 0 auto;
+	    padding-bottom: 15px;
+	}
+	.item3 img{
+		display: block!important;
+    	margin-bottom: 5px;
+	}
+	.dashang-text{
+		margin-left: 15px;
+	    text-align: center;
+	    line-height: 32px;
+	    flex: 1;
+	}
+	.dashang-text :last-child{
+		background-color: #f2f3f8;
+    	border-radius: 17px;
+    	color: #36c26c;
+	}
+
+	.item4 .dashang-inner{
+	    width: 90%;
+	    margin: 0 auto;
+	    padding-bottom: 15px;
+	}
+	.item4 .dashang-inner{
+		color: #999;
+    	line-height: 24px;
+	}
+	.item4 .dashang-inner span{
+		color: #fdb52d;
+	}
+
+	#crowd{
+		color: #fff;
+	    justify-content: space-between;
+	    width: 100%;
+	    position: absolute;
+	    top: .2rem;
+	    padding: 0 15px;
+	    left: 0;
+	    box-sizing: border-box;
+	    text-align: center
+		
+	}
+	#crowd img{
+		display: inline;
+		width: 80px;
+    	height: 80px;
+	}
+	#crowd :nth-child(2){
+		font-size: 16px;
+		margin-top: 10px;
+	}
+	#crowd p{
+		line-height: 24px;
+	}
+	
+
+	#alertGoods{
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+		box-sizing: border-box;
+		background-color: rgba(0,0,0,.6);
+		z-index: 99;
+		display: none;
+	} 
+	#alertGoods .goods{
+		background-color: #fff;
+		border-radius: 4px;
+		width: 90%;
+		margin:.5rem auto 0;
+	}
+	.goods ul li{
+		line-height: 40px;
+		border-bottom: solid 1px #e3e4e5;
+		padding: 0 15px;
+	}
+	.goods ul li:first-child{
+		text-align: center;
+		font-size: 16px;
+		line-height: 50px;
+		color: #333;
+		font-weight: bold;
+	}
+	.goods ul li input,.goods ul li textarea{
+		font-size: 14px;
+	}
+	.goods ul li textarea{
+		width: 100%;
+	    text-indent: 73px;
+	    padding-top: 10px;
+	}
+	.closed{
+		position: absolute;
+	    top: 0;
+	    right: 0;
+	    font-size: 20px;
+	    line-height: 30px;
+	    font-weight: normal;
+	    width: 30px;
+	    height: 30px;
+	    text-align: center;
+	}
+	#goodsSub{
+		display: block;
+	    margin: 30px auto;
+	    font-size: 16px;
+	    color:#36c26c;
+	    background-color: #fff;
+	    width: 100%;
+	}
+</style>
+</head>
+<body>
+	<header>
+		<img src="images/my.png">
+		<a href="myInfo.html" id="myInfo">个人资料</a>
+		<ul class="cf">
+			<li>
+				<img data-pic="0" src="images/info1a.png">
+				<p>我的关注</p>
+			</li>
+			<li>
+				<img data-pic="1" src="images/info2b.png">
+				<p>我的打赏</p>
+			</li>
+			<li>
+				<img data-pic="2" src="images/info3b.png">
+				<p>收到打赏</p>
+			</li>
+			<li>
+				<img data-pic="3" src="images/crowd4b.png">
+				<p>我的众筹</p>
+			</li>
+		</ul>
+		<section id="crowd">
+			<img src="images/footboy.png">
+			<p>昵称</p>
+			<p>150****8180</p>
+		</section>
+	</header>
+	<section id="main">
+		<section class="item" style="display: block;">
+			<section class="list">
+				<p class="top cf">
+					<span>17-11-21&emsp;</span>
+					<span>14:40&emsp;</span>
+					<span>周六&emsp;</span>
+				</p>
+				<section class="inner">
+					<section class="inner1">
+						<img src="images/game_bank.png">
+						<span>招商银行</span>
+					</section>
+					<section class="inner2 estimate">
+						<span>周六</span>
+						<span>08:20</span>
+					</section>
+					<section class="inner3">
+						<span>新华社</span>
+						<img src="images/game_hua.png">
+					</section>
+					
+				</section>
+			</section>
+		 
+			<section class="list">
+				<p class="top cf">
+					<span>17-11-21&emsp;</span>
+					<span>14:40&emsp;</span>
+					<span>周六&emsp;</span>
+				</p>
+				<section class="inner">
+					<section class="inner1">
+						<img src="images/game_bank.png">
+						<span>招商银行</span>
+					</section>
+					<section class="inner2 direct">
+						<p class="direct-num">0&ensp;:&ensp;0</p>
+						<p class="direct-status">直播中&emsp;</p>
+					</section>
+					<section class="inner3">
+						<span>新华社</span>
+						<img src="images/game_hua.png">
+					</section>
+					
+				</section>
+			</section>
+		 
+			
+		</section>
+		<section class="item" id="goodsList">
+			<div class="list item-my">
+				<section class="rew-left">
+		            <img src="images/shop.png">
+		        </section>
+		        <section class="rew-right">
+		            <p>订单编号：527666677789098700</p>
+		            <p>下单时间：2017/09/12</p>
+		            <p>打赏人：梅西</p>
+		            <p class="my-block">晒一下</p>
+		        </section>
+			</div>
+			<div class="list item-my">
+				<section class="rew-left">
+		            <img src="images/shop.png">
+		        </section>
+		        <section class="rew-right">
+		            <p>订单编号：527666677789098700</p>
+		            <p>下单时间：2017/09/12</p>
+		            <p>打赏人：梅西</p>
+		            <p class="my-block">晒一下</p>
+		        </section>
+			</div>
+			<div class="list item-my">
+				<section class="rew-left">
+		            <img src="images/shop.png">
+		        </section>
+		        <section class="rew-right">
+		            <p>订单编号：527666677789098700</p>
+		            <p>下单时间：2017/09/12</p>
+		            <p>打赏人：梅西</p>
+		            <p class="my-block">晒一下</p>
+		        </section>
+			</div>
+		</section>
+
+
+		<section class="item">
+			<div class="list item-my">
+				<section class="rew-left">
+		            <img src="images/shop.png">
+		        </section>
+		        <section class="rew-right">
+		            <p>订单编号：527666677789098700</p>
+		            <p>下单时间：2017/09/12</p>
+		            <p>打赏人：梅西</p>
+		            <p class="my-block">晒一下</p><p data-index="0" class="my-block receive">领取</p>
+		        </section>
+			</div>
+			<div class="list item-my">
+				<section class="rew-left">
+		            <img src="images/shop.png">
+		        </section>
+		        <section class="rew-right">
+		            <p>订单编号：527666677789098700</p>
+		            <p>下单时间：2017/09/12</p>
+		            <p>打赏人：梅西</p>
+		            <p class="my-block">晒一下</p><p data-index="1" class="my-block receive">领取</p>
+		        </section>
+			</div>
+			<div class="list item-my">
+				<section class="rew-left">
+		            <img src="images/shop.png">
+		        </section>
+		        <section class="rew-right">
+		            <p>订单编号：527666677789098700</p>
+		            <p>下单时间：2017/09/12</p>
+		            <p>打赏人：梅西</p>
+		            <p class="my-block">晒一下</p><p data-index="2" class="my-block receive">已领取</p>
+		        </section>
+			</div>
+			<div class="list item-my">
+				<section class="rew-left">
+		            <img src="images/shop.png">
+		        </section>
+		        <section class="rew-right">
+		            <p>订单编号：527666677789098700</p>
+		            <p>下单时间：2017/09/12</p>
+		            <p>打赏人：梅西</p>
+		            <p class="my-block">晒一下</p><p data-index="3" class="my-block receive">领取</p>
+		        </section>
+			</div>
+		</section>
+		<section class="item item4">
+			<section class="shangtop">
+				<section class="dashang-inner">
+					<p>今天新增众筹：<span>80</span>&ensp;笔&ensp;|&ensp;<span>880</span>&ensp;元</p>
+					<p>历史众筹：<span>380</span>&ensp;笔&ensp;|&ensp;<span>2880</span> &ensp;元</p>
+				</section>
+					
+			</section>
+			<section class="list">
+				<section class="inner">
+					<section class="">
+						<img src="images/game_bank.png">
+						<span>招商银行</span>
+					</section>
+					<section class="dashang-text">
+						<p>30十分钟前夏明打赏火牛一罐</p>
+						<p>加油啊！！</p>
+					</section>
+				</section>
+			</section>
+
+		</section>
+	</section>
+	<section id="alertGoods">
+		<section class="goods cf">
+			<ul>
+				<li style="position: relative;">
+					<p>收货地址</p>
+					<b class="closed">X</b>
+				</li>
+				<li>
+					<label>收货人姓名：</label>
+					<input type="text" name="" placeholder="输入收货人姓名" id="goodsName">
+				</li>
+				<li>
+					<label>联系电话：</label>
+					<input type="tel" maxlength="11" name="" placeholder="输入收货人电话" id="goodsPhone">
+				</li>
+				<li>
+					<label style="position: absolute;">收货地址：</label>
+					<textarea placeholder="输入详细地址" rows="4" cols="4" id="goodsRess"></textarea>
+				</li>
+			</ul>
+			<button id="goodsSub">提交</button>
+		</section>
+	</section>
+<script src="js/loadingCss3.js"></script>  
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/layer-min.js"></script>  
+<script type="text/javascript">
+	var gameObj={
+		picb:["images/info1b.png","images/info2b.png","images/info3b.png","images/info4b.png"],
+		pica:["images/info1a.png","images/info2a.png","images/info3a.png","images/crowd4a.png"]
+	}
+	$("header ul li").on("click",function(){
+		var index=$(this).index();
+		$("#main .item").eq(index).css("display","block").siblings().css("display","none");
+		 
+		var num=$(this).attr("data-pic");
+		for (var i = 0; i < gameObj.picb.length; i++) {
+			$("header ul li img")[i].src=gameObj.picb[i]
+		};
+		var indexPic=gameObj.pica[index];
+		$("header ul li").eq(index).find("img").attr("src",indexPic);
+		$(this).css("color","#36c26c").siblings().css("color","#41576a")
+	})
+	$("#goodsSub").on("click",function(){
+		
+		var reg_phone = /^\d{11,}$/;
+	    var phoneVal = $("#goodsPhone").val();
+	    var phoneLength = phoneVal.length;
+	    var goodsName = $("#goodsName").val();
+		var goodsRess = $("#goodsRess").val();
+
+	    if (goodsName == "") {
+	    	layer.open({
+			  title: '提示'
+			  ,content: '请输入收货人姓名'
+			});
+	        return
+	    };
+	    if (!reg_phone.test(phoneVal) || $.trim(phoneVal) == "") {
+	    	layer.open({
+			  title: '提示'
+			  ,content: '请输入有效手机号码'
+			});
+	        return
+	    };
+	    if (goodsRess == "") {
+	    	layer.open({
+			  title: '提示'
+			  ,content: '请输入详细地址'
+			});
+	        return
+	    };
+		// 提交成功后前台领取按钮修改
+	    var index=$(this).attr("data-item");
+		index=Number(index);
+		var dom=$(".receive").eq(index).html("已领取");
+	    
+	})
+	$(".closed").on("click",function(){
+		$("#alertGoods").css("display","none");
+	})
+	$(".receive").on("click",function(){
+		var index=$(this).attr("data-index");
+		if ($(this).html()=="领取") {
+			$("#alertGoods").css("display","block");
+			$("#goodsSub").attr("data-item",index);
+		}
+	})
+
+</script>
+
+</body>
+</html>

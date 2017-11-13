@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>我要打赏</title>
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="js/fontsizeset.js"></script>
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/loadingCss3.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <style type="text/css">
+    	body{
+    		background-color: #f2f3f8;
+    	}
+    	.reward{
+    		background-color: #fff;
+    	}
+        .reward .list {
+            display: flex;
+            padding: 15px;
+            border-bottom: solid 1px #e3e4e5;
+        }
+
+        .rew-left {
+            width: .7rem;
+            border: solid 1px #e3e4e5;
+            padding: 5px;
+            margin-right: 15px;
+        }
+
+        .rew-mid {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 8px 0;
+        }
+
+        .rew-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 8px 0;
+            color: #999;
+        }
+        .rew-name{
+ 			color: #36c26c;
+ 		}
+ 		.rew-mony,.monycolor{
+ 			color: #fdb52d;
+ 		}
+        /*数量加减*/
+        .plus{
+        	border: solid 1px #e3e4e5;
+        	border-radius: 3px;
+        	display: flex;
+        }
+        .plus span{
+        	width: 24px;
+        	height: 24px;
+		    display: inline-block;
+		    text-align: center;
+        }
+        .bor-right{
+        	border-right: solid 1px #e3e4e5;
+        }
+        .mp_mp{
+        	width: 30px !important;
+        }
+        .mp_mp input{
+        	width: 100%;
+        	height: 24px;
+        	text-align: center;
+        }
+        .mp_minous,.mp_plus{
+        	font-size: 18px;
+        }
+        .no-mins {
+   			color: #ccc;
+ 		}
+ 		
+		/*商品合计*/
+ 		#resultMony{
+ 			display: flex;
+    		justify-content: flex-end;
+ 		}
+ 		.monyinner{
+ 			display: flex;
+    		padding: 20px 15px;
+ 		}
+ 		.monyinner p{
+ 			margin-left: 10px;
+ 		}
+ 		.monypropt{
+ 			font-size: 12px;
+    		padding-top: 2px;
+ 		}
+ 		/*留言*/
+ 		.message{
+ 			padding: 0 15px 20px 15px;
+ 		}
+ 		.message input{
+ 			background-color: #f2f3f8;
+		    display: block;
+		    width: 100%;
+		    line-height: 40px;
+		    text-align: center;
+		    border-radius: 4px;
+ 		}
+ 		#payment{
+ 			width: 90%;
+		    background-color: #36c26c;
+		    display: block;
+		    margin: 50px auto 0;
+		    height: 44px;
+		    border-radius: 3px;
+		    font-size: 16px;
+		    color: #fff;
+ 		}
+    </style>
+</head>
+<body>
+
+<section class="reward">
+    <section class="list">
+        <section class="rew-left">
+            <img src="images/shop.png">
+        </section>
+        <section class="rew-mid">
+            <p class="rew-name">友情支持</p>
+            <p>金额：<span class="rew-mony monylist">5</span><span class="rew-mony">元</span></p>
+        </section>
+        <section class="rew-right">
+            <p><span class="rew-num">1</span>个能量值</p>
+            <!--选择数量-->
+            <section class="plus">
+                <span class="mp_minous bor-right" onclick="altergoodsnum(-1,this)">-</span>
+                <span class="mp_mp bor-right">
+                	<input disabled  type="text" class="num" id="number" name="goods_num" value="1" max="5" onblur="altergoodsnum(0,this)">
+                </span>
+                <span class="mp_plus" onclick="altergoodsnum(1,this)">+</span>
+            </section>
+        </section>
+    </section>
+    <section class="list">
+        <section class="rew-left">
+            <img src="images/shop0.png">
+        </section>
+        <section class="rew-mid">
+            <p class="rew-name">友情支持</p>
+            <p>金额：<span class="rew-mony monylist">5</span><span class="rew-mony">元</span></p>
+        </section>
+        <section class="rew-right">
+            <p><span class="rew-num">1</span>个能量值</p>
+            <!--选择数量-->
+            <section class="plus">
+                <span class="mp_minous bor-right" onclick="altergoodsnum(-1,this)">-</span>
+                <span class="mp_mp bor-right">
+                	<input disabled  type="text" class="num" id="number" name="goods_num" value="1" max="5" onblur="altergoodsnum(0,this)">
+                </span>
+                <span class="mp_plus" onclick="altergoodsnum(1,this)">+</span>
+            </section>
+        </section>
+    </section>
+    <section class="list">
+        <section class="rew-left">
+            <img src="images/shop1.png">
+        </section>
+        <section class="rew-mid">
+            <p class="rew-name">友情支持</p>
+            <p>金额：<span class="rew-mony monylist">5</span><span class="rew-mony">元</span></p>
+        </section>
+        <section class="rew-right">
+            <p><span class="rew-num">1</span>个能量值</p>
+            <!--选择数量-->
+            <section class="plus">
+                <span class="mp_minous bor-right" onclick="altergoodsnum(-1,this)">-</span>
+                <span class="mp_mp bor-right">
+                	<input disabled  type="text" class="num" id="number" name="goods_num" value="1" max="5" onblur="altergoodsnum(0,this)">
+                </span>
+                <span class="mp_plus" onclick="altergoodsnum(1,this)">+</span>
+            </section>
+        </section>
+    </section>
+    <section id="resultMony">
+    	<section class="monyinner">
+    		<p>总计<span id="shopNum">3</span>件商品</p>
+    		<p class="monypropt">小计：</p>
+    		<p class="monycolor"><span id="sumMony"></span>元</p>
+    	</section>
+    </section>
+    <section id="message" class="message">
+    	<input type="text" name="" placeholder="请输入您的留言">
+    </section>
+</section>
+<button id="payment">下单支付</button>
+<script src="js/loadingCss3.js"></script>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/layer-min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#shopNum").html($(".list").length);
+		var sum=0;
+		var sumMony=document.getElementById("sumMony");
+		$.each($(".monylist"),function(i,dom){
+        	sum+=Number(dom.innerHTML)
+        });
+		sumMony.innerHTML=sum;
+	});
+	function altergoodsnum(n,_this){
+		var sum=0;
+ 		var result=5; //后台取的金额
+		var valnum=_this.parentNode.children[1].children[0];
+        var num = Number(valnum.value);
+        var maxnum = Number(valnum.max); //后台取的产品数量
+        var rewnum =_this.parentNode.parentNode.children[0].children[0];
+		var mony=_this.parentNode.parentNode.parentNode.children[1].children[1].children[0];
+		var sumMony=document.getElementById("sumMony");
+
+        num += n;
+        num <= 0 ? num = 1 :  num;
+
+        if(num >= maxnum){
+            $(this).addClass('no-mins');
+            num = maxnum;
+        }
+        rewnum.innerHTML=num; //能量数量
+        valnum.value=rewnum.innerHTML;//input数量
+        //金额
+        if (_this.innerHTML=='-') {
+			
+			if (mony.innerHTML==result) {
+				return
+			}else{
+				mony.innerHTML=Number(mony.innerHTML)-result;
+			}
+        }else{
+        	
+        	if(maxnum== num){
+        		return
+        	}else{
+        		mony.innerHTML=Number(mony.innerHTML)+result;
+        	}
+        }
+        $.each($(".monylist"),function(i,dom){
+        	sum+=Number(dom.innerHTML)
+        });
+        sumMony.innerHTML=sum;
+    }
+     
+    $("#payment").on("click",function(){
+		location.href="rewardPay.html"
+    })
+</script>
+
+</body>
+</html>

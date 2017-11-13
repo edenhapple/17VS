@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>球队</title>
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<script src="js/fontsizeset.js"></script>
+<link href="css/reset.css" rel="stylesheet">
+<link href="css/loadingCss3.css" rel="stylesheet">
+<link href="css/layer.css" rel="stylesheet">
+<style type="text/css">
+	body{
+		background-color: #f2f3f8;
+		color: #41576a;
+	}
+	header{
+		position: relative;
+	}
+	header #myrewardFoot{
+		width: 18px;
+		height: 18px;
+		background: no-repeat url(images/icon_per.png);
+		position: absolute;
+		right: 20px;
+	    top: 18px;
+	    background-size: cover;
+	}
+	header ul{
+		width: 90%;
+	    background-color: #fff;
+	    border-radius: 6px;
+	    margin: -34px auto;
+	    position: relative;
+	    padding: 10px 0;
+	    box-shadow: 2px 2px 4px #ececec;
+	}
+	header ul li{
+		display: inline-block;
+	    width: 25%;
+	    float: left;
+	    text-align: center;
+	}
+	header ul li img{
+		display: inline;
+		width: 50%;
+
+	}
+	header ul li p{
+		margin-top: 5px;
+	}
+	header ul li:first-child{
+		color: #36c26c;
+	}
+
+	#main{
+		background-color: #fff;
+		margin-top: 50px;
+	}
+	#main .list{
+		padding:10px 15px;
+		border-bottom: solid 1px #e3e4e5;
+	}
+	#main .list .top{
+		text-align: center;
+    	color: #999;
+    	margin-bottom: 12px;
+	}
+	#main .list .inner,.item2-list{
+		display: flex;
+		align-items: center;
+	}
+	#main .list .inner1,#main .list .inner3,.item3-inner span{
+		line-height: 40px;
+	}
+	#main .list .inner2{
+		flex: 1;
+		text-align: center;
+	}
+	#main .list .inner2 span{
+		color: #36c26c;
+	}
+	#main .list .inner img,.item3-inner img,.item2-list img{
+		width: 40px;
+		height: 40px;
+		display: inline;
+	}
+	#main .item{
+		display: none;
+	}
+
+
+	.direct-num,.over-num{
+		font-size: 16px;
+    	font-weight: bold;
+	}
+	.direct-status,.over-status{
+		border: solid 1px #36c26c;
+	    display: inline-block;
+	    /*padding: 2px 0px;*/
+	    border-radius: 24px;
+	    color: #36c26c;
+	    width: 80px;
+		line-height: 18px;
+		height: 18px;
+		font-size: 12px;
+	}
+	.direct-status{
+		background: no-repeat url(images/game_play.png) right;
+		background-size: 20px;
+	}
+	.over-status{
+		color: #999;
+		border: solid 1px #999;
+	}
+
+	#gameTable table{
+		width: 100%;
+		text-align: center;
+		line-height: 28px;
+	}
+	#gameTable table tr:nth-child(odd){
+		background-color:#fff;
+	}
+	#gameTable table tr:nth-child(even){
+		background-color:#f4f7eb;
+	}
+	#gameTable table tr td,#gameTable table tr th{
+		border-right: solid 1px #e3e4e5;
+		font-weight: normal;
+	}
+	#gameTable table tr th{
+		background-color: #36c26c;
+		color: #fff;
+	}
+	#gameTable table tr th:first-child{
+		border-right:0;
+	}
+	#gameTable table tr th b{
+		font-size: 16px;
+	}
+	.add-td-bg{
+		background-color: #fdb52d;
+	    color: #fff;
+	    height: 20px;
+	    width: 20px;
+	    border-radius: 50%;
+	    display: block;
+	    line-height: 20px;
+	    margin: 0 auto;
+	}
+	.item3{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+    	position: relative;
+	}
+	.item3-inner1{
+		color: #999;
+	}
+	.item3-inner1 span{
+		position: absolute;
+	    top: 10px;
+	    right: 15px;
+	}
+	.item3-inner1 p{
+		padding-right: 20px;
+		background: no-repeat url(images/icon_right.png) right;
+		background-size: 16px;
+		line-height: 26px;
+	}
+	.add-yellow,.item2-list :nth-child(4){
+		color: #fdb52d;
+	}
+
+	.item2-list p{
+		margin-left: 10px;
+	}
+	.item2-list button{
+		background-color: rgba(0,0,0,0);
+		position: absolute;
+    	right: 15px;
+    	color: #36c26c;
+    	padding: 5px 10px;
+    	border: solid 1px #36c26c;
+    	border-radius: 4px;
+	}
+	.item2-list :nth-child(3){
+		padding: 0 10px;
+		border: solid 1px #41576a;
+		border-radius: 4px;
+		box-sizing: border-box;
+		line-height: 20px;
+		height: 20px;
+	}
+	
+	.item3 .shangtop,.item4 .shangtop{
+		background-color: #f2f3f8;
+	}
+	.item3 .dashang-inner{
+		display: flex;
+	    justify-content: space-between;
+	    width: 90%;
+	    margin: 0 auto;
+	    padding-bottom: 15px;
+	}
+	.item3 img{
+		display: block!important;
+    	margin-bottom: 5px;
+	}
+	.dashang-text{
+		margin-left: 15px;
+	    text-align: center;
+	    line-height: 32px;
+	    flex: 1;
+	}
+	.dashang-text :last-child{
+		background-color: #f2f3f8;
+    	border-radius: 17px;
+    	color: #36c26c;
+	}
+
+	.item4 .dashang-inner{
+	    width: 90%;
+	    margin: 0 auto;
+	    padding-bottom: 15px;
+	}
+	.item4 .dashang-inner{
+		color: #999;
+    	line-height: 24px;
+	}
+	.item4 .dashang-inner span{
+		color: #fdb52d;
+	}
+
+	#crowd{
+		color: #fdb52d;
+	    display: flex;
+	    justify-content: space-between;
+	    width: 100%;
+	    position: absolute;
+	    bottom: 1rem;
+	    padding: 0 15px;
+	    left: 0;
+	    box-sizing: border-box;
+
+	}
+	#crowd p{
+		background-color: rgba(0,0,0,.6);
+		padding: 0 15px;
+    	border-radius: 2px;
+	}
+	#crowd a{
+		text-decoration: none;
+		color:#fdb52d;
+	}
+</style>
+</head>
+<body>
+	<header>
+		<img src="images/game_banner.png">
+		<a href="myrewardFoot.html" id="myrewardFoot"></a>
+		<ul class="cf">
+			<li>
+				<img data-pic="0" src="images/info1a.png">
+				<p>球队动态</p>
+			</li>
+			<li>
+				<img data-pic="1" src="images/info2b.png">
+				<p>队员信息</p>
+			</li>
+			<li>
+				<img data-pic="2" src="images/info3b.png">
+				<p>收到打赏</p>
+			</li>
+			<li>
+				<img data-pic="3" src="images/crowd4b.png">
+				<p>收到众筹</p>
+			</li>
+		</ul>
+		<section id="crowd">
+			<p>已收到&ensp;<span>5678</span>&ensp;元众筹</p>
+			<a href="crowd.html">队费众筹</a>
+		</section>
+	</header>
+	<section id="main">
+		<section class="item" style="display: block;">
+			<section class="list">
+				<p class="top cf">
+					<span>17-11-21&emsp;</span>
+					<span>14:40&emsp;</span>
+					<span>周六&emsp;</span>
+				</p>
+				<section class="inner">
+					<section class="inner1">
+						<img src="images/game_bank.png">
+						<span>招商银行</span>
+					</section>
+					<section class="inner2 estimate">
+						<span>周六</span>
+						<span>08:20</span>
+					</section>
+					<section class="inner3">
+						<span>新华社</span>
+						<img src="images/game_hua.png">
+					</section>
+					
+				</section>
+			</section>
+		 
+			<section class="list">
+				<p class="top cf">
+					<span>17-11-21&emsp;</span>
+					<span>14:40&emsp;</span>
+					<span>周六&emsp;</span>
+				</p>
+				<section class="inner">
+					<section class="inner1">
+						<img src="images/game_bank.png">
+						<span>招商银行</span>
+					</section>
+					<section class="inner2 direct">
+						<p class="direct-num">0&ensp;:&ensp;0</p>
+						<p class="direct-status">直播中&emsp;</p>
+					</section>
+					<section class="inner3">
+						<span>新华社</span>
+						<img src="images/game_hua.png">
+					</section>
+					
+				</section>
+			</section>
+		 
+			
+		</section>
+		<section class="item" id="rewardFoot">
+			<div class="list item2-list">
+				<img src="images/footboy.png">
+				<p>张张🐘</p>
+				<p>前锋</p>
+				<p>40个打赏</p>
+				<button>我要打赏</button>
+			</div>
+			<div class="list item2-list">
+				<img src="images/footboy.png">
+				<p>张张🐘</p>
+				<p>前锋</p>
+				<p>40个打赏</p>
+				<button>我要打赏</button>
+			</div>
+			<div class="list item2-list">
+				<img src="images/footboy.png">
+				<p>张张🐘</p>
+				<p>前锋</p>
+				<p>40个打赏</p>
+				<button>我要打赏</button>
+			</div>
+			<div class="list item2-list">
+				<img src="images/footboy.png">
+				<p>张张🐘</p>
+				<p>前锋</p>
+				<p>40个打赏</p>
+				<button>我要打赏</button>
+			</div>
+		</section>
+
+		<section class="item item3">
+			<section class="shangtop">
+				<section class="dashang-inner">
+					<p>今天新增打赏：<span>80</span>笔</p>
+					<p>历史打赏：<span>280</span>笔</p>
+				</section>
+					
+			</section>
+			<section class="list">
+				<section class="inner">
+					<section class="">
+						<img src="images/game_bank.png">
+						<span>招商银行</span>
+					</section>
+					<section class="dashang-text">
+						<p>30十分钟前夏明打赏火牛一罐</p>
+						<p>加油啊！！</p>
+					</section>
+				</section>
+			</section>
+		</section>
+		<section class="item item4">
+			<section class="shangtop">
+				<section class="dashang-inner">
+					<p>今天新增众筹：<span>80</span>&ensp;笔&ensp;|&ensp;<span>880</span>&ensp;元</p>
+					<p>历史众筹：<span>380</span>&ensp;笔&ensp;|&ensp;<span>2880</span> &ensp;元</p>
+				</section>
+					
+			</section>
+			<section class="list">
+				<section class="inner">
+					<section class="">
+						<img src="images/game_bank.png">
+						<span>招商银行</span>
+					</section>
+					<section class="dashang-text">
+						<p>30十分钟前夏明打赏火牛一罐</p>
+						<p>加油啊！！</p>
+					</section>
+				</section>
+			</section>
+
+		</section>
+	</section>
+
+<script src="js/loadingCss3.js"></script>  
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/layer-min.js"></script>  
+<script type="text/javascript">
+	var gameObj={
+		picb:["images/info1b.png","images/info2b.png","images/info3b.png","images/crowd4b.png"],
+		pica:["images/info1a.png","images/info2a.png","images/info3a.png","images/crowd4a.png"]
+	}
+	$("header ul li").on("click",function(){
+		var index=$(this).index();
+		$("#main .item").eq(index).css("display","block").siblings().css("display","none");
+		 
+		var num=$(this).attr("data-pic");
+		for (var i = 0; i < gameObj.picb.length; i++) {
+			$("header ul li img")[i].src=gameObj.picb[i]
+		};
+		var indexPic=gameObj.pica[index];
+		$("header ul li").eq(index).find("img").attr("src",indexPic);
+		$(this).css("color","#36c26c").siblings().css("color","#41576a")
+	})
+	$("#rewardFoot button").on("click",function(){
+		location.href="rewardMy.html";
+	})
+</script>
+
+</body>
+</html>

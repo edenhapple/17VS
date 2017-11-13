@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>我要打赏</title>
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="js/fontsizeset.js"></script>
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/loadingCss3.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <style type="text/css">
+    	body{
+    		background-color: #f2f3f8;
+    	}
+        .crowd{
+            background-color: #fff;
+            padding: 15px;
+        }
+ 		.crowd :first-child{
+            color: #36c26c;
+            margin-bottom: 5px;
+        }
+        .crowd :last-child{
+            color: #999;
+        }
+        .crowd span{
+            color: #fdb52d !important;
+        }
+        footer{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            background-color: #fff;
+        }
+        footer button{
+            padding: 0 34px;
+            color: #fff;
+            background-color: #36c26c;
+            font-size: 16px;
+        }
+        footer .monyinner {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+        }
+        .monyinner p {
+            margin-left: 10px;
+        }
+        .monycolor {
+            color: #fdb52d;
+        }
+    </style>
+</head>
+<body>
+
+<section class="crowd">
+    <p>我提交的众筹金额</p>
+    <p>金额：<span>15</span><span>元</span></p>
+</section>
+
+<footer>
+    <section class="monyinner">
+        <p>共<span id="shopNum">0</span>件商品</p>
+        <p class="monycolor">总计<span id="sumMony">0</span>元</p>
+    </section>
+    <button id="payment">立即支付</button>
+</footer>
+
+<script src="js/loadingCss3.js"></script>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/layer-min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#shopNum").html($(".list").length);
+		var sum=0;
+		var sumMony=document.getElementById("sumMony");
+		$.each($(".monylist"),function(i,dom){
+        	sum+=Number(dom.innerHTML)
+        });
+		sumMony.innerHTML=sum;
+	});
+	$("#payment").on("click",function(){
+        location.href="success.html"
+    })
+</script>
+
+</body>
+</html>
