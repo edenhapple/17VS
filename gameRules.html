@@ -58,127 +58,17 @@
 		background-color: #fff;
 		margin-top: 50px;
 	}
-	#main .list{
-		padding:10px 15px;
-		border-bottom: solid 1px #e3e4e5;
-	}
-	#main .list .top{
-		text-align: center;
-    	color: #999;
-    	margin-bottom: 12px;
-	}
-	#main .list .inner{
-		display: flex;
-		align-items: center;
-	}
-	#main .list .inner1,#main .list .inner3,.item3-inner span{
-		line-height: 40px;
-	}
-	#main .list .inner2{
-		flex: 1;
-		text-align: center;
-	}
-	#main .list .inner2 span{
-		color: #36c26c;
-	}
-	#main .list .inner img,.item3-inner img{
-		width: 40px;
-		height: 40px;
-		display: inline;
-	}
+
 	#main .item{
 		display: none;
 	}
 
 
-	.direct-num,.over-num{
-		font-size: 16px;
-    	font-weight: bold;
-	}
-	.direct-status,.over-status{
-		border: solid 1px #36c26c;
-	    display: inline-block;
-	    /*padding: 2px 0px;*/
-	    border-radius: 24px;
-	    color: #36c26c;
-	    width: 80px;
-		line-height: 18px;
-		height: 18px;
-		font-size: 12px;
-	}
-	.direct-status{
-		background: no-repeat url(images/game_play.png) right;
-		background-size: 20px;
-	}
-	.over-status{
-		color: #999;
-		border: solid 1px #999;
-	}
 
-	#gameTable table{
-		width: 100%;
-		text-align: center;
-		line-height: 28px;
-	}
-	#gameTable table tr:nth-child(odd){
-		background-color:#fff;
-	}
-	#gameTable table tr:nth-child(even){
-		background-color:#f4f7eb;
-	}
-	#gameTable table tr td,#gameTable table tr th{
-		border-right: solid 1px #e3e4e5;
-		font-weight: normal;
-	}
-	#gameTable table tr th{
-		background-color: #36c26c;
-		color: #fff;
-	}
-	#gameTable table tr th:first-child{
-		border-right:0;
-	}
-	#gameTable table tr th b{
-		font-size: 16px;
-	}
-	.add-td-bg{
-		background-color: #fdb52d;
-	    color: #fff;
-	    height: 20px;
-	    width: 20px;
-	    border-radius: 50%;
-	    display: block;
-	    line-height: 20px;
-	    margin: 0 auto;
-	}
-	.item3{
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding-top: 30px !important;
-    	position: relative;
-	}
-	.item3-inner1{
-		color: #999;
-	}
-	.item3-inner1 span{
-		position: absolute;
-	    top: 10px;
-	    right: 15px;
-	}
-	.item3-inner1 p{
-		padding-right: 20px;
-		background: no-repeat url(images/icon_right.png) right;
-		background-size: 16px;
-		line-height: 26px;
-	}
-	.add-yellow{
-		color: #fdb52d;
-	}
-
-	#plan {
+	.item {
 		padding: 15px;
 	}
-	#plan ul li{
+	.item ul li{
 		line-height: 32px;
 	}
 	#gameSign{
@@ -191,29 +81,66 @@
 	    font-size: 16px;
 	    color: #fff;
 	}
+	/*底部公共部分*/
+	#about {
+		background-color: #f2f3f8;
+		text-align: center;
+		padding: 15px 0;
 	}
+
+	#about img {
+		width: 35%;
+		margin: 8px auto
+	}
+
+	#about h4 {
+		line-height: 30px;
+		font-size: 16px;
+	}
+
+	#about h4 span {
+		height: 1px;
+		display: inline-block;
+		width: 25%;
+		border-top: solid 1px #e5e6e8;
+		line-height: 30px;
+		margin: 4px 7px;
+	}
+
+	#about p {
+		line-height: 24px;
+	}
+
+	footer {
+		padding: 15px 0;
+		background: no-repeat url(images/index_btm.png);
+		background-size: cover;
+		text-align: center;
+		color: #fff;
+	}
+	/*底部公共部分*/
 </style>
 </head>
 <body>
 	<header>
 		<img src="images/game_banner.png">
-		<a href="my.html" id="myInfo"></a>
+		<a id="myInfo"></a>
 		<ul class="cf">
 			<li>
 				<img data-pic="0" src="images/rulers1a.png">
-				<p>赛程安排</p>
+				<p>赛程规则</p>
 			</li>
 			<li>
 				<img data-pic="1" src="images/rulers2b.png">
-				<p>积分排名</p>
+				<p>报名规则</p>
 			</li>
 			<li>
 				<img data-pic="2" src="images/rulers3b.png">
-				<p>参赛球队</p>
+				<p>相关费用</p>
 			</li>
 			<li>
 				<img data-pic="3" src="images/rulers4b.png">
-				<p>我要打赏</p>
+				<p>注意事项</p>
 			</li>
 		</ul>
 	</header>
@@ -230,216 +157,58 @@
 			</ul>
 			<button id="gameSign">立即报名</button>
 		</section>
-		<section class="item" id="gameTable">
-			<table>
-				<tr>
-					<th><b>A</b>组</th>
-					<th></th>
-					<th>胜/平/负</th>
-					<th>进球</th>
-					<th>净进球</th>
-					<th>积分</th>
-				</tr>
-				<tr>
-					<td><span class="add-td-bg">1</span></td>
-					<td>冠心软件</td>
-					<td>6/4/5</td>
-					<td>4</td>
-					<td>3</td>
-					<td>4</td>
-				</tr>
-				<tr>
-					<td><span class="add-td-bg">2</span></td>
-					<td>华语软件</td>
-					<td>6/4/5</td>
-					<td>3</td>
-					<td>3</td>
-					<td>3</td>
-				</tr>
-				<tr>
-					<td><span class="add-td-bg">3</span></td>
-					<td>知乎网</td>
-					<td>6/4/5</td>
-					<td>2</td>
-					<td>2</td>
-					<td>2</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>快乐先锋</td>
-					<td>6/4/5</td>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td>君乐堡</td>
-					<td>6/4/5</td>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
-				</tr>
-			</table>
-			<table>
-				<tr>
-					<th><b>B</b>组</th>
-					<th></th>
-					<th>胜/平/负</th>
-					<th>进球</th>
-					<th>净进球</th>
-					<th>积分</th>
-				</tr>
-				<tr>
-					<td><span class="add-td-bg">1</span></td>
-					<td>冠心软件</td>
-					<td>6/4/5</td>
-					<td>4</td>
-					<td>3</td>
-					<td>4</td>
-				</tr>
-				<tr>
-					<td><span class="add-td-bg">2</span></td>
-					<td>华语软件</td>
-					<td>6/4/5</td>
-					<td>3</td>
-					<td>3</td>
-					<td>3</td>
-				</tr>
-				<tr>
-					<td><span class="add-td-bg">3</span></td>
-					<td>知乎网</td>
-					<td>6/4/5</td>
-					<td>2</td>
-					<td>2</td>
-					<td>2</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>快乐先锋</td>
-					<td>6/4/5</td>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td>君乐堡</td>
-					<td>6/4/5</td>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
-				</tr>
-			</table>
+		<section class="item">
+			<ul>
+				<li>·所有队员在本方半场内；</li>
+				<li>·开球队的对方队员，应距球至少9.15米 (10码)，直到比赛进行；</li>
+				<li>·球应放定在中心标记上；</li>
+				<li>·裁判员发出信号；</li>
+				<li>·当球被踢并向前移动时比赛即为进行；</li>
+				<li>·开球队员在球未经其他队员触及前不得再次触球。</li>
+				<li>某队进球得分后，由另一队开球。</li>
+			</ul>
 		</section>
 
 		<div class="item">
-			<div class="list item3">
-				<section class="item3-inner">
-					<img src="images/game_bank.png">
-					<span>招商银行</span>
-				</section>
-				<section class="item3-inner1">
-					<span class="add-yellow">+关注</span>
-					<p>查看球队信息</p>
-				</section>
-			</div>
-			<div class="list item3">
-				<section class="item3-inner">
-					<img src="images/game_bank.png">
-					<span>招商银行</span>
-				</section>
-				<section class="item3-inner1">
-					<span class="add-yellow">+关注</span>
-					<p>查看球队信息</p>
-				</section>
-			</div>
-			<div class="list item3">
-				<section class="item3-inner">
-					<img src="images/game_bank.png">
-					<span>招商银行</span>
-				</section>
-				<section class="item3-inner1">
-					<span class="add-yellow">+关注</span>
-					<p>查看球队信息</p>
-				</section>
-			</div>
-			<div class="list item3">
-				<section class="item3-inner">
-					<img src="images/game_bank.png">
-					<span>招商银行</span>
-				</section>
-				<section class="item3-inner1">
-					<span>已关注</span>
-					<p>查看球队信息</p>
-				</section>
-			</div>
-			<div class="list item3">
-				<section class="item3-inner">
-					<img src="images/game_bank.png">
-					<span>招商银行</span>
-				</section>
-				<section class="item3-inner1">
-					<span>已关注</span>
-					<p>查看球队信息</p>
-				</section>
-			</div>
+			<ul>
+				<li>·所有队员在本方半场内；</li>
+				<li>·开球队的对方队员，应距球至少9.15米 (10码)，直到比赛进行；</li>
+				<li>·球应放定在中心标记上；</li>
+				<li>·裁判员发出信号；</li>
+				<li>·当球被踢并向前移动时比赛即为进行；</li>
+				<li>·开球队员在球未经其他队员触及前不得再次触球。</li>
+				<li>某队进球得分后，由另一队开球。</li>
+			</ul>
 		</div>
 		<div class="item">
-			<div class="list item3">
-				<section class="item3-inner">
-					<img src="images/game_bank.png">
-					<span>招商银行</span>
-				</section>
-				<section class="item3-inner1">
-					<span class="add-yellow">+关注</span>
-					<p>查看球队信息</p>
-				</section>
-			</div>
-			<div class="list item3">
-				<section class="item3-inner">
-					<img src="images/game_bank.png">
-					<span>招商银行</span>
-				</section>
-				<section class="item3-inner1">
-					<span class="add-yellow">+关注</span>
-					<p>查看球队信息</p>
-				</section>
-			</div>
-			<div class="list item3">
-				<section class="item3-inner">
-					<img src="images/game_bank.png">
-					<span>招商银行</span>
-				</section>
-				<section class="item3-inner1">
-					<span class="add-yellow">+关注</span>
-					<p>查看球队信息</p>
-				</section>
-			</div>
-			<div class="list item3">
-				<section class="item3-inner">
-					<img src="images/game_bank.png">
-					<span>招商银行</span>
-				</section>
-				<section class="item3-inner1">
-					<span>已关注</span>
-					<p>查看球队信息</p>
-				</section>
-			</div>
-			<div class="list item3">
-				<section class="item3-inner">
-					<img src="images/game_bank.png">
-					<span>招商银行</span>
-				</section>
-				<section class="item3-inner1">
-					<span>已关注</span>
-					<p>查看球队信息</p>
-				</section>
-			</div>
-		</div>
+			<ul>
+				<li>·所有队员在本方半场内；</li>
+				<li>·开球队的对方队员，应距球至少9.15米 (10码)，直到比赛进行；</li>
+				<li>·球应放定在中心标记上；</li>
+				<li>·裁判员发出信号；</li>
+				<li>·当球被踢并向前移动时比赛即为进行；</li>
+				<li>·开球队员在球未经其他队员触及前不得再次触球。</li>
+				<li>某队进球得分后，由另一队开球。</li>
+			</ul>
 	</section>
 
-<script src="js/loadingCss3.js"></script>  
+	<!--底部公共部分-->
+	<section id="about">
+		<h4><span></span>关于我们<span></span></h4>
+		<p>17VS基于移动互联网+赛事的方式</p>
+		<p>依托线上互联网工具，线下场馆和赛事服务团队等为</p>
+		<p style="margin-bottom: 20px;">用户提供赛前、赛中、赛后的一站式服务</p>
+		<h4><span></span>联系我们<span></span></h4>
+		<p>17VS基于移动互联网+赛事的方式</p>
+		<img src="images/400_2x.png">
+		<p>任何问题，17VS客服随时为您解忧</p>
+	</section>
+	<footer>
+		<p>Copright 2017-1019 北京17VS科技有限公司</p>
+		<p>北京ICP备16020515号</p>
+	</footer>
+	<!--底部公共部分-->
+<script src="js/loadingCss3.js"></script>
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/layer-min.js"></script>  
 <script type="text/javascript">
@@ -462,7 +231,9 @@
 	$("#gameSign").on("click",function(){
 		location.href="signReg.html"
 	})
-	
+    $("#myInfo").on("click",function(){
+        location.href="reg.html"
+    })
 </script>
 
 </body>

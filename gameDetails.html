@@ -179,7 +179,7 @@
 <body>
 	<header>
 		<img src="images/game_banner.png">
-		<a href="my.html" id="myInfo"></a>
+		<a id="myInfo"></a>
 		<ul class="cf">
 			<li>
 				<img data-pic="0" src="images/game1a.png">
@@ -373,7 +373,7 @@
 			</table>
 		</section>
 
-		<div class="item">
+		<div class="item" id="gameInfo">
 			<div class="list item3">
 				<section class="item3-inner">
 					<img src="images/game_bank.png">
@@ -500,6 +500,12 @@
 		$(this).css("color","#36c26c").siblings().css("color","#41576a");
 	})
 
+    $("#gameInfo .item3-inner1 p").on("click",function(){
+		location.href="gameInfo.html";
+	})
+    $("#myInfo").on("click",function(){
+        location.href="reg.html"
+    })
 </script>
 
 </body>

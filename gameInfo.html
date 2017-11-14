@@ -18,7 +18,7 @@
 	header{
 		position: relative;
 	}
-	header #myrewardFoot{
+	header #myInfo{
 		width: 18px;
 		height: 18px;
 		background: no-repeat url(images/icon_per.png);
@@ -260,7 +260,7 @@
 <body>
 	<header>
 		<img src="images/game_banner.png">
-		<a href="myrewardFoot.html" id="myrewardFoot"></a>
+		<a id="myInfo"></a>
 		<ul class="cf">
 			<li>
 				<img data-pic="0" src="images/info1a.png">
@@ -433,6 +433,9 @@
 	$("#rewardFoot button").on("click",function(){
 		location.href="rewardMy.html";
 	})
+    $("#myInfo").on("click",function(){
+        location.href="reg.html"
+    })
 </script>
 
 </body>
